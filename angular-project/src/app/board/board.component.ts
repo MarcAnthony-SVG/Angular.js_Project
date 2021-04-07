@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class BoardComponent implements OnInit {
   squares: string[];
   xIsNext: boolean;
-  winner: string;
+  winner: string | null;
 
   constructor() {}
 
@@ -19,8 +19,8 @@ export class BoardComponent implements OnInit {
 
   newGame() {
     this.squares = Array(9).fill(null);
-    // this.winner = null;
     this.xIsNext = true;
+    this.winner = null;
   }
 
   get player() {
@@ -33,7 +33,7 @@ export class BoardComponent implements OnInit {
       this.xIsNext = !this.xIsNext;
     }
 
-    // this.winner = this.calculateWinner();
+    this.winner = this.calculateWinner();
   }
 
   calculateWinner() {
